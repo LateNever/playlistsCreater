@@ -1,0 +1,29 @@
+.listFormContainer {
+  margin: 30px;
+  padding: 35px;
+  background-color: #515d6d;
+  border-radius: 15px;
+  border: none;
+  width: 65%;
+  min-width: 500px;
+}
+
+.listFormContainer h1 {
+  padding-bottom: 30px;
+}
+.listFormContainer form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.listFormContainer input {
+  margin-bottom: 30px;
+  width: 55%;
+  height: 30px;
+  font-size: 1.3rem;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  background-color: #bdcfdb;
+}
