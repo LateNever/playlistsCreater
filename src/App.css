@@ -1,6 +1,17 @@
 .App {
-  text-align: center;
   display: flex;
-  /* align-items: center; */
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
   justify-content: center;
+}
+
+.App div {
+  margin: 30px;
+  padding: 35px;
+  background-color: #515d6d;
+  border-radius: 15px;
+  border: none;
+  width: 65%;
+  min-width: 500px;
 }
