@@ -5,14 +5,14 @@ import styles from './ListForm.module.css'
 function ListForm({ handleFilters }) {
   const [songsQuantity, setSongsQuantity] = useState('')
   const [barName, setBarName] = useState('harats')
-  const [danceReady, setDanceReady] = useState('')
+  const [gigsQuantity, setGigsQuantity] = useState('')
 
   const onSubmitHandler = (ev) => {
     ev.preventDefault()
     handleFilters({
       songsQuantity: songsQuantity,
       barName: barName,
-      danceReady: danceReady,
+      gigsQuantity: gigsQuantity,
     })
   }
 
@@ -31,9 +31,9 @@ function ListForm({ handleFilters }) {
           onChange={(e) => setBarName(e.target.value)}
         ></input>
         <input
-          placeholder="Enter ready to dance"
-          value={danceReady}
-          onChange={(e) => setDanceReady(e.target.value)}
+          placeholder="Enter quantity of Gigs"
+          value={gigsQuantity}
+          onChange={(e) => setGigsQuantity(e.target.value)}
         ></input>
         <Button type="submit" title="Submit">
           Generate

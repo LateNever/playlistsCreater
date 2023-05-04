@@ -5,6 +5,7 @@ const allTracks = [
     songName: 'Босая',
     bars: ['zarnizza', 'bullwar'],
     trackNumbers: [1, 2, 3],
+    gigNumbers: [1, 2, 3],
   },
   {
     id: 1002,
@@ -12,6 +13,7 @@ const allTracks = [
     songName: 'Девушки как звезды',
     bars: ['harats', 'zarnizza', 'bullwar'],
     trackNumbers: [2, 3, 4, 5, 6],
+    gigNumbers: [1],
   },
   {
     id: 1003,
@@ -19,6 +21,7 @@ const allTracks = [
     songName: 'Алешка',
     bars: ['harats', 'zarnizza', 'bullwar'],
     trackNumbers: ['lastTrack'],
+    gigNumbers: [1, 2, 3],
   },
   {
     id: 1004,
@@ -26,6 +29,7 @@ const allTracks = [
     songName: 'Твои глаза',
     bars: ['harats', 'zarnizza', 'bullwar'],
     trackNumbers: [1, 2, 3, 4, 5, 6],
+    gigNumbers: [1, 2],
   },
   {
     id: 1005,
@@ -33,6 +37,15 @@ const allTracks = [
     songName: 'Тулула',
     bars: ['harats', 'zarnizza', 'bullwar'],
     trackNumbers: [2, 3, 4, 5, 6],
+    gigNumbers: [1, 2, 3],
+  },
+  {
+    id: 1003,
+    writer: 'Келли Кларксон',
+    songName: 'Бикос оф ю',
+    bars: ['harats', 'zarnizza', 'bullwar'],
+    trackNumbers: ['lastTrack'],
+    gigNumbers: [1, 2, 3],
   },
 ]
 
