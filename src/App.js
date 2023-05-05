@@ -1,11 +1,11 @@
 import { useState } from 'react'
 import ListForm from './components/Lists/ListForm'
 import Playlist from './components/Lists/Playlist'
-import allTracks from './data/allTracks'
+import tracks from './data/allTracks'
 import './App.css'
 
 function App() {
-  const [tracks, setTracks] = useState(allTracks)
+  // const [tracks, setTracks] = useState(allTracks)
   // const [filters, setFilters] = useState({})
   const [filtredTracks, setFiltredTracks] = useState([])
 
@@ -22,6 +22,7 @@ function App() {
     let tracksArr = tracks.filter((track) =>
       track.bars.includes(filters.barName)
     )
+    console.log(tracksArr)
 
     for (let i = 0; i < filters.songsQuantity; i++) {
       const selectedTrack = chooseTrack(tracksArr, i + 1)
@@ -29,11 +30,12 @@ function App() {
       tracksArr = tracksArr.filter((track) => track !== selectedTrack)
       // console.log(tracksArr)
     }
-    console.log(filtredTracsArr)
+    // console.log(filtredTracsArr)
     return filtredTracsArr
   }
 
   const handleFilters = (filters) => {
+    console.log(filters)
     // setFilters(filters)
     // setTracks(tracks.filter((track) => track.bars.includes(filters.barName)))
     setFiltredTracks(createList(tracks, filters))
