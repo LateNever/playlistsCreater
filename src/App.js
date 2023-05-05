@@ -18,7 +18,8 @@ function App() {
       // console.log(i)
       // gig.map((gigTrack) => console.log(gigTrack))
     }
-    console.log(playList)
+    return playList
+    // console.log(playList)
   }
 
   const createGig = (tracks, filters, gigNumber) => {
@@ -47,13 +48,12 @@ function App() {
   const handleFilters = (filters) => {
     // setFiltredTracks(createGig(tracks, filters))
     setFiltredTracks(createPlayList(tracks, filters))
-    console.log(tracks)
   }
 
   return (
     <div className="App">
       <ListForm handleFilters={handleFilters} />
-      {/* <Playlist tracks={filtredTracks} /> */}
+      <Playlist gigs={filtredTracks} />
     </div>
   )
 }
