@@ -5,6 +5,7 @@ export const allTracks = [
     songName: 'Босая',
     bars: ['zarnizza', 'bullwar'],
     trackNumbers: [1, 2, 3],
+    gigNumbers: [1, 2, 3],
   },
   {
     id: 1002,

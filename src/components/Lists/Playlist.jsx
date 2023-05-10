@@ -1,10 +1,11 @@
+import Gig from './Gig'
 import styles from './Playlist.module.css'
 
-function Playlist({ tracks }) {
+function Playlist({ gigs }) {
   return (
     <div className={styles.playlistContainer}>
-      {tracks.map((track) => {
-        return <h3 key={track.id}>{track.songName}</h3>
+      {gigs.map((gig) => {
+        return <Gig gig={gig} />
       })}
     </div>
   )

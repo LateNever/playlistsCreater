@@ -1,4 +1,4 @@
-/* .listFormContainer {
+.listFormContainer {
   margin: 30px;
   padding: 35px;
   background-color: #515d6d;
@@ -6,7 +6,7 @@
   border: none;
   width: 65%;
   min-width: 500px;
-} */
+}
 
 .listFormContainer h1 {
   padding-bottom: 30px;
