@@ -1,54 +1,56 @@
 import { useState } from 'react'
 import ListForm from './components/Lists/ListForm'
 import Playlist from './components/Lists/Playlist'
-import tracks from './data/allTracks'
+import allTracks from './data/allTracks'
 import './App.css'
 
 function App() {
   const [filtredTracks, setFiltredTracks] = useState([])
+  const [tracks, setTracks] = useState([allTracks])
 
-  const createPlayList = (tracks, filters) => {
-    let playList = []
-    for (let i = 0; i < filters.gigsQuantity; i++) {
-      const gig = createGig(tracks, filters, i)
-      playList.push(gig)
-      // const selectedTrack = chooseTrack(tracks, i + 1)
-      // gig.push(selectedTrack)
-      tracks = tracks.filter((track) => !gig.includes(track))
-      // console.log(i)
-      // gig.map((gigTrack) => console.log(gigTrack))
-    }
-    return playList
-    // console.log(playList)
+  const handleFilters = (filters) => {
+    setFiltredTracks(createPlayList(filters))
   }
 
-  const createGig = (tracks, filters, gigNumber) => {
-    tracks = tracks.filter((track) => track.bars.includes(filters.barName))
-    tracks = tracks.filter((track) => track.gigNumbers.includes(gigNumber + 1))
-    // console.log(gigNumber)
+  const createPlayList = (filters) => {
+    let playList = []
+    for (let i = 0; i < filters.gigsQuantity; i++) {
+      const gig = createGig(filters, i)
+      playList.push(gig)
+      // tracks = tracks.filter((track) => !gig.includes(track))
+    }
+    return playList
+  }
+
+  const createGig = (filters, gigNumber) => {
+    console.log(tracks)
+    // tracks.filter((track) => console.log(track.bars))
+    filterTracks(tracks.filter((track) => track.bars.includes(filters.barName)))
+    filterTracks(
+      tracks.filter((track) => track.gigNumbers.includes(gigNumber + 1))
+    )
     let gig = []
     for (let i = 0; i < filters.songsQuantity - 1; i++) {
-      const selectedTrack = chooseTrack(tracks, i + 1)
+      const selectedTrack = chooseTrack(i + 1)
       gig.push(selectedTrack)
-      tracks = tracks.filter((track) => track !== selectedTrack)
+      // tracks = tracks.filter((track) => track !== selectedTrack)
     }
-    const selectedLastTrack = chooseTrack(tracks, 'lastTrack')
+    const selectedLastTrack = chooseTrack('lastTrack')
     gig.push(selectedLastTrack)
     return gig
   }
 
-  const chooseTrack = (tracks, trackNumber) => {
+  const chooseTrack = (trackNumber) => {
     const tracksByNumber = tracks.filter((track) =>
       track.trackNumbers.includes(trackNumber)
     )
-    const randomTrack = Math.floor(Math.random() * tracksByNumber.length)
-    return tracksByNumber[randomTrack]
+    const randomTrackNumber = Math.floor(Math.random() * tracksByNumber.length)
+    const randomTrack = tracksByNumber[randomTrackNumber]
+    filterTracks(tracks.filter((track) => track.id !== randomTrack.id))
+    return randomTrack
   }
 
-  const handleFilters = (filters) => {
-    // setFiltredTracks(createGig(tracks, filters))
-    setFiltredTracks(createPlayList(tracks, filters))
-  }
+  const filterTracks = (tracksArr) => setTracks(tracksArr)
 
   return (
     <div className="App">
