@@ -1,11 +1,13 @@
 import { useState } from 'react'
 import ListForm from './components/Lists/ListForm'
 import Playlist from './components/Lists/Playlist'
-import tracks from './data/allTracks'
+import allTracks from './data/allTracks'
 import './App.css'
 
 function App() {
   const [filtredTracks, setFiltredTracks] = useState([])
+  const [tracks, setTracks] = useState(allTracks)
+  const [count, setCount] = useState(10)
 
   const createPlayList = (tracks, filters) => {
     let playList = []
@@ -37,7 +39,7 @@ function App() {
     return gig
   }
 
-  const chooseTrack = (tracks, trackNumber) => {
+  const chooseTrack = (trackNumber) => {
     const tracksByNumber = tracks.filter((track) =>
       track.trackNumbers.includes(trackNumber)
     )
@@ -46,8 +48,11 @@ function App() {
   }
 
   const handleFilters = (filters) => {
+    for (let i = 0; i < 5; i++) {
+      chooseTrack(1)
+    }
     // setFiltredTracks(createGig(tracks, filters))
-    setFiltredTracks(createPlayList(tracks, filters))
+    // setFiltredTracks(createPlayList(tracks, filters))
   }
 
   return (
