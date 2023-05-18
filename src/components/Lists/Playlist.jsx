@@ -5,7 +5,7 @@ function Playlist({ gigs }) {
   return (
     <div className={styles.playlistContainer}>
       {gigs.map((gig) => {
-        return <Gig gig={gig} />
+        return <Gig key={gig[0].id} gig={gig} />
       })}
     </div>
   )

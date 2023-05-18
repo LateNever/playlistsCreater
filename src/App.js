@@ -6,51 +6,78 @@ import './App.css'
 
 function App() {
   const [filtredTracks, setFiltredTracks] = useState([])
-  const [tracks, setTracks] = useState([allTracks])
+  // const [tracks, setTracks] = useState(allTracks)
+
+  // const filterTracks = (tracksArr, trackProp, filterProp) => {
+  //   // console.log(tracksArr)
+  //   // tracksArr.forEach((track) => console.log(track[trackProp]))
+  //   // console.log(filterProp)
+  //   return tracksArr.filter((track) => track[trackProp].includes(filterProp))
+  // }
+
+  // let tracks = [...allTracks]
 
   const handleFilters = (filters) => {
-    setFiltredTracks(createPlayList(filters))
+    // console.log(createGig(filters))
+    // const arr = filterTracks(allTracks, 'trackNumbers', 'lastTrack')
+    // console.log(arr)
+    setFiltredTracks(createPlayList(filters, allTracks))
+    // createPlayList(filters)
   }
 
-  const createPlayList = (filters) => {
+  const createPlayList = (filters, tracks) => {
     let playList = []
+    let barTracks = tracks.filter((track) =>
+      track.bars.includes(filters.barName)
+    )
     for (let i = 0; i < filters.gigsQuantity; i++) {
-      const gig = createGig(filters, i)
+      const gig = createGig(filters, barTracks, i)
       playList.push(gig)
-      // tracks = tracks.filter((track) => !gig.includes(track))
+      barTracks = barTracks.filter((track) => !gig.includes(track))
     }
+    // console.log(tracks)
     return playList
   }
 
-  const createGig = (filters, gigNumber) => {
-    console.log(tracks)
+  const createGig = (filters, barTracks, gigNumber) => {
+    // const tracksFiltredByBars = tracks.filter((track) =>
+    //   track.bars.includes(filters.barName)
+    // )
+    // console.log(tracksFiltredByBars)
     // tracks.filter((track) => console.log(track.bars))
-    filterTracks(tracks.filter((track) => track.bars.includes(filters.barName)))
-    filterTracks(
-      tracks.filter((track) => track.gigNumbers.includes(gigNumber + 1))
+    // console.log(gigNumber)
+
+    let gigTracks = barTracks.filter((track) =>
+      track.gigNumbers.includes(gigNumber + 1)
     )
     let gig = []
-    for (let i = 0; i < filters.songsQuantity - 1; i++) {
-      const selectedTrack = chooseTrack(i + 1)
+    for (let i = 0; i < filters.songsQuantity; i++) {
+      const selectedTrack = chooseTrack(i, gigTracks, filters.songsQuantity - 1)
       gig.push(selectedTrack)
-      // tracks = tracks.filter((track) => track !== selectedTrack)
+      gigTracks = gigTracks.filter((track) => track.id !== selectedTrack.id)
     }
-    const selectedLastTrack = chooseTrack('lastTrack')
-    gig.push(selectedLastTrack)
+    // const selectedLastTrack = chooseTrack('lastTrack', gigTracks)
+    // gig.push(selectedLastTrack)
     return gig
   }
 
-  const chooseTrack = (trackNumber) => {
-    const tracksByNumber = tracks.filter((track) =>
-      track.trackNumbers.includes(trackNumber)
+  const chooseTrack = (trackNumber, gigTracks, lastNumber) => {
+    // console.log(lastNumber)
+
+    const tracksByNumber = gigTracks.filter(
+      (track) =>
+        track.lowTrackNum * lastNumber <= trackNumber &&
+        trackNumber <= track.highTrackNum * lastNumber
+      // track.trackNumbers.includes(trackNumber)
     )
+
     const randomTrackNumber = Math.floor(Math.random() * tracksByNumber.length)
     const randomTrack = tracksByNumber[randomTrackNumber]
-    filterTracks(tracks.filter((track) => track.id !== randomTrack.id))
+    // tracksByNumber = tracksByNumber.filter((track) => track.id !== randomTrack.id)
     return randomTrack
   }
 
-  const filterTracks = (tracksArr) => setTracks(tracksArr)
+  // const filterTracks = (tracksArr) => setTracks(tracksArr)
 
   return (
     <div className="App">
