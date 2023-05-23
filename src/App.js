@@ -2,6 +2,9 @@ import { useState } from 'react'
 import ListForm from './components/Lists/ListForm'
 import Playlist from './components/Lists/Playlist'
 import allTracks from './data/allTracks'
+import noneTrack from './data/noneTrack'
+import CopyText from './components/Lists/ClipBoard'
+// import { useUID } from 'react-uid'
 import './App.css'
 
 function App() {
@@ -17,7 +20,13 @@ function App() {
 
   // let tracks = [...allTracks]
 
+  const copyGig = () => {
+    console.log('Hi')
+  }
+
   const handleFilters = (filters) => {
+    // const uniqueId = useUID()
+    // console.log(uniqueId)
     // console.log(createGig(filters))
     // const arr = filterTracks(allTracks, 'trackNumbers', 'lastTrack')
     // console.log(arr)
@@ -47,14 +56,29 @@ function App() {
     // tracks.filter((track) => console.log(track.bars))
     // console.log(gigNumber)
 
-    let gigTracks = barTracks.filter((track) =>
-      track.gigNumbers.includes(gigNumber + 1)
+    // console.log(barTracks)
+
+    let gigTracks = barTracks.filter(
+      (track) =>
+        // track.gigNumbers.includes(gigNumber + 1)
+        track.lowGigNum * filters.gigsQuantity <= gigNumber &&
+        gigNumber <= track.highGigNum * filters.gigsQuantity
     )
+
+    // console.log(gigTracks)
+
     let gig = []
     for (let i = 0; i < filters.songsQuantity; i++) {
       const selectedTrack = chooseTrack(i, gigTracks, filters.songsQuantity - 1)
-      gig.push(selectedTrack)
-      gigTracks = gigTracks.filter((track) => track.id !== selectedTrack.id)
+      // selectedTrack ? console.log('hi') : (console.log('buy');
+      if (selectedTrack) {
+        gig.push(selectedTrack)
+        gigTracks = gigTracks.filter((track) => track.id !== selectedTrack.id)
+      } else {
+        const newNoneTrack = { ...noneTrack }
+        console.log(newNoneTrack)
+        gig.push(newNoneTrack)
+      }
     }
     // const selectedLastTrack = chooseTrack('lastTrack', gigTracks)
     // gig.push(selectedLastTrack)
@@ -81,8 +105,9 @@ function App() {
 
   return (
     <div className="App">
+      <CopyText />
       <ListForm handleFilters={handleFilters} />
-      <Playlist gigs={filtredTracks} />
+      <Playlist gigs={filtredTracks} onClick={copyGig} />
     </div>
   )
 }

@@ -1,29 +1,35 @@
-export const allTracks = [
+const allTracks = [
   {
     id: 1001,
     writer: '2Маши',
-    songName: 'First track 1',
+    songName: 'First track, first gig 1',
     bars: ['zarnizza', 'bullwar'],
     lowTrackNum: 0,
     highTrackNum: 0,
+    lowGigNum: 0,
+    highGigNum: 0.33,
     gigNumbers: [1, 2, 3],
   },
   {
     id: 1002,
     writer: '2Маши',
-    songName: 'First track 2',
+    songName: 'First track, mid gig 2',
     bars: ['zarnizza', 'bullwar'],
     lowTrackNum: 0,
     highTrackNum: 0,
+    lowGigNum: 0.33,
+    highGigNum: 0.66,
     gigNumbers: [1, 2, 3],
   },
   {
     id: 1003,
     writer: '2Маши',
-    songName: 'First track 3',
+    songName: 'First track, last gig 3',
     bars: ['zarnizza', 'bullwar'],
     lowTrackNum: 0,
     highTrackNum: 0,
+    lowGigNum: 0.66,
+    highGigNum: 1,
     gigNumbers: [1, 2, 3],
   },
   {
@@ -33,6 +39,8 @@ export const allTracks = [
     bars: ['zarnizza', 'bullwar'],
     lowTrackNum: 0.01,
     highTrackNum: 0.5,
+    lowGigNum: 0,
+    highGigNum: 1,
     gigNumbers: [1, 2, 3],
   },
   {
@@ -42,6 +50,8 @@ export const allTracks = [
     bars: ['zarnizza', 'bullwar'],
     lowTrackNum: 0.01,
     highTrackNum: 0.5,
+    lowGigNum: 0,
+    highGigNum: 1,
     gigNumbers: [1, 2, 3],
   },
   {
@@ -51,6 +61,8 @@ export const allTracks = [
     bars: ['zarnizza', 'bullwar'],
     lowTrackNum: 0.01,
     highTrackNum: 0.5,
+    lowGigNum: 0,
+    highGigNum: 1,
     gigNumbers: [1, 2, 3],
   },
   {
@@ -60,6 +72,8 @@ export const allTracks = [
     bars: ['zarnizza', 'bullwar'],
     lowTrackNum: 0.5,
     highTrackNum: 0.99,
+    lowGigNum: 0,
+    highGigNum: 1,
     gigNumbers: [1, 2, 3],
   },
   {
@@ -69,6 +83,8 @@ export const allTracks = [
     bars: ['zarnizza', 'bullwar'],
     lowTrackNum: 0.5,
     highTrackNum: 0.99,
+    lowGigNum: 0,
+    highGigNum: 1,
     gigNumbers: [1, 2, 3],
   },
   {
@@ -78,6 +94,8 @@ export const allTracks = [
     bars: ['zarnizza', 'bullwar'],
     lowTrackNum: 0.5,
     highTrackNum: 0.99,
+    lowGigNum: 0,
+    highGigNum: 1,
     gigNumbers: [1, 2, 3],
   },
   {
@@ -87,6 +105,8 @@ export const allTracks = [
     bars: ['zarnizza', 'bullwar'],
     lowTrackNum: 1,
     highTrackNum: 1,
+    lowGigNum: 0,
+    highGigNum: 1,
     gigNumbers: [1, 2, 3],
   },
   {
@@ -96,6 +116,8 @@ export const allTracks = [
     bars: ['zarnizza', 'bullwar'],
     lowTrackNum: 1,
     highTrackNum: 1,
+    lowGigNum: 0,
+    highGigNum: 1,
     gigNumbers: [1, 2, 3],
   },
   {
@@ -105,6 +127,8 @@ export const allTracks = [
     bars: ['zarnizza', 'bullwar'],
     lowTrackNum: 1,
     highTrackNum: 1,
+    lowGigNum: 0,
+    highGigNum: 1,
     gigNumbers: [1, 2, 3],
   },
   // {
