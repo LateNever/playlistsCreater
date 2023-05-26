@@ -4,7 +4,7 @@ import styles from './ListForm.module.css'
 
 function ListForm({ handleFilters }) {
   const [songsQuantity, setSongsQuantity] = useState('2')
-  const [barName, setBarName] = useState('zarnizza')
+  const [barName, setBarName] = useState('bullwar')
   const [gigsQuantity, setGigsQuantity] = useState('2')
 
   const onSubmitHandler = (ev) => {
@@ -25,11 +25,11 @@ function ListForm({ handleFilters }) {
           value={songsQuantity}
           onChange={(e) => setSongsQuantity(e.target.value)}
         ></input>
-        <input
-          placeholder="Enter BAR name"
-          value={barName}
-          onChange={(e) => setBarName(e.target.value)}
-        ></input>
+        <select value={barName} onChange={(e) => setBarName(e.target.value)}>
+          <option value="bullwar">bullwar</option>
+          <option value="zarnizza">zarnizza</option>
+          <option value="harats">harats</option>
+        </select>
         <input
           placeholder="Enter quantity of Gigs"
           value={gigsQuantity}

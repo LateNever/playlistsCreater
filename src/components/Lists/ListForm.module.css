@@ -1,11 +1,15 @@
 .listFormContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   margin: 30px;
   padding: 35px;
   background-color: #515d6d;
   border-radius: 15px;
   border: none;
   width: 65%;
-  min-width: 500px;
+  /* min-width: 500px; */
 }
 
 .listFormContainer h1 {
@@ -16,11 +20,24 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 75%;
 }
 .listFormContainer input {
+  box-sizing: border-box;
   margin-bottom: 30px;
-  width: 55%;
-  height: 30px;
+  width: 100%;
+  height: 50px;
+  font-size: 1.3rem;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  background-color: #bdcfdb;
+}
+
+.listFormContainer select {
+  margin-bottom: 30px;
+  width: 100%;
+  height: 50px;
   font-size: 1.3rem;
   padding: 10px 15px;
   border: none;
