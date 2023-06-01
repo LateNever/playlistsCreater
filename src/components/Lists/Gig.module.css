@@ -5,5 +5,9 @@
   border-radius: 15px;
   border: none;
   width: 100%;
-  min-width: 500px;
+  /* min-width: 500px; */
+}
+
+.gigList {
+  margin-bottom: 25px;
 }

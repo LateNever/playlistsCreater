@@ -1,0 +1,42 @@
+[33mcommit 6c0ef46c89eb3af9e56bcba7ca7114e89c5c1293[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Merge: ca9e636 d5fec90
+Author: LateNever <kirsharik@gmail.com>
+Date:   Wed May 10 23:21:35 2023 +0500
+
+    оптимизирую массив с треками
+
+[33mcommit ca9e63600656d4d3e585a71115eda55b9a0e48ae[m
+Author: LateNever <kirsharik@gmail.com>
+Date:   Fri May 5 22:15:38 2023 +0500
+
+    Треки загружены в дату
+
+[33mcommit d5fec90cae425fa6a28e2efd3fb1b1d45c13bd69[m[33m ([m[1;31morigin/mac_branch[m[33m)[m
+Author: Andrey Kirsh <andreykirsh@MacBook-Pro-Andrey.local>
+Date:   Fri May 5 21:19:25 2023 +0500
+
+    Рабочая версия, далее пробую  оптимизировать массив с треками
+
+[33mcommit ea34a57897008b4d631404e6d15e684134feb5b0[m
+Author: Andrey Kirsh <andreykirsh@MacBook-Pro-Andrey.local>
+Date:   Thu May 4 23:59:33 2023 +0500
+
+    Создаю генератор нескольких блоков
+
+[33mcommit e5d786573de80c429ac6eb01926349e66e774ec1[m
+Author: Andrey Kirsh <andreykirsh@MacBook-Pro-Andrey.local>
+Date:   Tue May 2 00:39:09 2023 +0500
+
+    Первая версия готова, необходимо добавить состояния в эпп
+
+[33mcommit 434a8439246c39784baa7e4a5a0f5c267c051420[m
+Author: LateNever <kirsharik@gmail.com>
+Date:   Sun Apr 30 16:58:04 2023 +0500
+
+    make layout form
+
+[33mcommit 36b01a6c3598dda7fec0d89b6329bdde7ba1b9ff[m
+Author: Andrey Kirsh <andreykirsh@MacBook-Pro-Andrey.local>
+Date:   Sat Apr 29 23:27:40 2023 +0500
+
+    Make temlate

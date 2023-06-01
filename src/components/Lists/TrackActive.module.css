@@ -1,0 +1,24 @@
+.trackContainer {
+  display: flex;
+  flex-direction: column;
+  /* text-align: center; */
+  align-items: center;
+  justify-content: center;
+  padding: 5px 0;
+  margin-bottom: 10px;
+  background-color: #8761b4;
+  border-radius: 15px;
+  border: none;
+}
+
+.trackContainer h3 {
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+.buttonsContainer {
+  margin: 15px 0 10px 0;
+  display: flex;
+  width: 220.641px;
+  justify-content: space-between;
+}
