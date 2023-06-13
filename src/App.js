@@ -1,4 +1,5 @@
-import { useState } from 'react'
+import { useState, useEffect, useRef } from 'react'
+import { uid } from 'react-uid'
 import ListForm from './components/Lists/ListForm'
 import Playlist from './components/Lists/Playlist'
 import allTracks from './data/allTracks'
@@ -10,9 +11,30 @@ import './App.css'
 
 function App() {
   const [filtredTracks, setFiltredTracks] = useState([])
+  const [selectedBar, setSelectedBar] = useState('')
+  const [gigsQuantity, setGigsQuantity] = useState(0)
+  const [songsQuantity, setSongsQuantity] = useState(0)
+
+  // useEffect(() => {
+  //   document.addEventListener('click', handleClickOutside, true)
+  // }, [])
+
+  // const refList = useRef(null)
+
+  // const handleClickOutside = (e) => {
+  //   console.log(e.target.ref)
+  //   if (refList.current.contains(e.target)) {
+  //     console.log('Wtf?')
+  //   } else {
+  //     console.log('Out')
+  //   }
+  // }
 
   const handleFilters = (filters) => {
     setFiltredTracks(createPlayList(filters, allTracks))
+    setSelectedBar(filters.barName)
+    setGigsQuantity(filters.gigsQuantity)
+    setSongsQuantity(filters.songsQuantity)
   }
 
   const createPlayList = (filters, tracks) => {
@@ -41,8 +63,7 @@ function App() {
         gig.push(selectedTrack)
         gigTracks = gigTracks.filter((track) => track.id !== selectedTrack.id)
       } else {
-        const newNoneTrack = { ...noneTrack }
-        console.log(newNoneTrack)
+        const newNoneTrack = { ...noneTrack, id: uid(i) }
         gig.push(newNoneTrack)
       }
     }
@@ -65,7 +86,6 @@ function App() {
     setFiltredTracks(
       filtredTracks.map((gig) => {
         gig = gig.map((track) => {
-          // track.id === trackId ? console.log('success') : console.log('loh')
           return track.id === trackId
             ? { ...track, isActive: !track.isActive }
             : { ...track, isActive: false }
@@ -73,6 +93,11 @@ function App() {
         return gig
       })
     )
+  }
+
+  const tracksNotActive = (e) => {
+    console.log(e.target.className)
+    toggleTrackHandler(null)
   }
 
   const moveTrackHandler = (trackId, dir) => {
@@ -88,7 +113,7 @@ function App() {
         }
         const selectedIndex = gig.indexOf(selectedTrack)
         const movingIndex = selectedIndex + dir
-        console.log(movingIndex)
+        // console.log(movingIndex)
 
         if (movingIndex >= 0 && movingIndex < gig.length) {
           gig = gig.map((track, index, tracks) => {
@@ -104,19 +129,89 @@ function App() {
     )
   }
 
-  const hiFromTrackHandler = (trackId) => {
-    console.log(trackId)
+  const replaceTrackHandler = (trackId) => {
+    // console.log(trackId)
+    setFiltredTracks(
+      filtredTracks.map((gig, index) => {
+        const selectedTrack = gig.find((track) => {
+          if (track.id === trackId) {
+            return true
+          }
+        })
+        if (!selectedTrack) {
+          return gig
+        }
+        const selectedIndex = gig.indexOf(selectedTrack)
+        // const selectedIndex = gig.indexOf(selectedTrack)
+        // const movingIndex = selectedIndex + dir
+        // console.log(selectedTrack)
+        // console.log(selectedBar)
+        // console.log(gigsQuantity)
+        // console.log(songsQuantity)
+        // console.log(selectedIndex)
+        // console.log(++index)
+        // console.log(filtredTracks)
+        // console.log(allTracks)
+
+        let allGigsTracksId = []
+
+        filtredTracks.map((gig) =>
+          gig.map((track) => allGigsTracksId.push(track.id))
+        )
+
+        // console.log(allGigsTracksId)
+
+        const replaceFiltredTracks = allTracks.filter(
+          (track) =>
+            track.bars.includes(selectedBar) &&
+            track.lowGigNum * gigsQuantity <= index &&
+            index <= track.highGigNum * gigsQuantity &&
+            !allGigsTracksId.includes(track.id)
+        )
+
+        console.log(replaceFiltredTracks)
+
+        // console.log(replaceFiltredTracks)
+
+        const replacedTrack = chooseTrack(
+          selectedIndex,
+          replaceFiltredTracks,
+          songsQuantity - 1
+        )
+
+        console.log(!!replacedTrack)
+
+        // const gigTracks = barTracks.filter(
+        //   (track) =>
+        //     track.lowGigNum * filters.gigsQuantity <= gigNumber &&
+        //     gigNumber <= track.highGigNum * filters.gigsQuantity
+        // )
+
+        // if (movingIndex >= 0 && movingIndex < gig.length) {
+        gig = gig.map((track, index) => {
+          return index == selectedIndex && !!replacedTrack
+            ? { ...replacedTrack, isActive: true }
+            : { ...track }
+        })
+        // }
+        // console.log(gig)
+        return [...gig]
+      })
+    )
   }
 
-  // console.log(filtredTracks)
-
   return (
-    <div className="App">
+    <div
+      className="App"
+      // ref={refList}
+      // onClick={tracksNotActive}
+    >
       <ListForm handleFilters={handleFilters} />
       <Playlist
         gigs={filtredTracks}
         toggleTrack={toggleTrackHandler}
         moveTrack={moveTrackHandler}
+        replaceTrack={replaceTrackHandler}
       />
     </div>
   )

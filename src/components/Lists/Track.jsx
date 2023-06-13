@@ -5,6 +5,7 @@ function Track(props) {
   const { children, onClick, trackId } = props
   return (
     <div
+      id="trackContainer"
       className={styles.trackContainer}
       data-trackid={trackId}
       onClick={onClick}

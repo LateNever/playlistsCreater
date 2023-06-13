@@ -6,6 +6,7 @@ const noneTrack = {
   lowTrackNum: 0,
   highTrackNum: 0,
   gigNumbers: [1, 2, 3],
+  isActive: false,
 }
 
 export default noneTrack

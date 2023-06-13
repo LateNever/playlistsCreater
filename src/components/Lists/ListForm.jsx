@@ -3,9 +3,9 @@ import Button from '../UI/Button'
 import styles from './ListForm.module.css'
 
 function ListForm({ handleFilters }) {
-  const [songsQuantity, setSongsQuantity] = useState('5')
+  const [songsQuantity, setSongsQuantity] = useState('3')
   const [barName, setBarName] = useState('bullwar')
-  const [gigsQuantity, setGigsQuantity] = useState('1')
+  const [gigsQuantity, setGigsQuantity] = useState('3')
 
   const onSubmitHandler = (ev) => {
     ev.preventDefault()

@@ -9,11 +9,12 @@
   background-color: #7d7db5;
   border-radius: 15px;
   border: none;
+  cursor: pointer;
+  transition: 1000ms;
 }
 
 .trackContainer h3 {
   margin: 10px 0;
-  cursor: pointer;
 }
 
 .buttons {
